@@ -19,8 +19,10 @@ if [[ ${#NO_CHANGES} -gt 0 ]]; then
     exit 0
 fi
 PLANNED_CHANGES=$(grep "Plan: " "$WORKING_FILE_PATH")
-# Delete after the ──────────... line
+# Delete everything after the ──────────... line
 sed '/──────/Q' -i'' $WORKING_FILE_PATH
+# Delete everything before "Terraform will perform the following actions" line
+sed '0,/Terraform will perform the following actions/d' -i'' $WORKING_FILE_PATH
 echo "<span style='font-size:1.25rem;font-weight:semibold'>$PLANNED_CHANGES</span>"
 echo "---------------"
 echo "Below you'll find the complete plan output."
