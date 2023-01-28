@@ -1,0 +1,22 @@
+name: 'Terraform summary report'
+description: 'Creates a Job summary from a "terraform plan" output file'
+inputs:
+  # TODO: Detect whether JSON or not and format accordingly
+  log-file:
+    description: Path to file containing terraform plan text output
+    required: true
+  title:
+    description: Title of the job summary
+    required: false
+    default: Terraform plan output
+runs:
+  using: "composite"
+  steps:
+    # Adds this folder to the system path
+    - shell: bash
+      run: echo "${{ github.action_path }}" >> $GITHUB_PATH
+    - shell: bash
+      run: |
+        TF_OUT=$(format-output.sh "${{inputs.log-file}}")
+        echo "# ${{ inputs.title }}" >> $GITHUB_STEP_SUMMARY
+        echo "$TF_OUT" >> $GITHUB_STEP_SUMMARY
