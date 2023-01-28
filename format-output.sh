@@ -11,7 +11,7 @@ cp "$FILE_PATH" "$WORKING_FILE_PATH"
 # Remove ANSI colors
 sed 's/\x1b\[[0-9;]*m//g' -i'' "$WORKING_FILE_PATH"
 # Remove "reading... lines"
-grep -v "Refreshing state...\|[rR]eading...\|Read complete after\|::debug:\|[command]" "$WORKING_FILE_PATH" > "$WORKING_FILE_PATH-tmp" && mv "$WORKING_FILE_PATH-tmp" "$WORKING_FILE_PATH"
+grep -v "Refreshing state...\|[rR]eading...\|Read complete after\|::debug:" "$WORKING_FILE_PATH" > "$WORKING_FILE_PATH-tmp" && mv "$WORKING_FILE_PATH-tmp" "$WORKING_FILE_PATH"
 # Extract summary of planned changes
 NO_CHANGES=$(grep "No changes" "$WORKING_FILE_PATH" || echo "")
 if [[ ${#NO_CHANGES} -gt 0 ]]; then
@@ -19,14 +19,15 @@ if [[ ${#NO_CHANGES} -gt 0 ]]; then
     exit 0
 fi
 PLANNED_CHANGES=$(grep "Plan: " "$WORKING_FILE_PATH")
-# Delete everything after the ──────────... line
-sed '/──────/Q' -i'' $WORKING_FILE_PATH
+# Delete everything after the "Plan: ..." line
+sed '/Plan: /q' -i'' "$WORKING_FILE_PATH"
 # Delete everything before "Terraform will perform the following actions" line
-sed '0,/Terraform will perform the following actions/d' -i'' $WORKING_FILE_PATH
+sed '0,/Terraform will perform the following actions/d' -i'' "$WORKING_FILE_PATH"
 echo "<span style='font-size:1.25rem;font-weight:semibold'>$PLANNED_CHANGES</span>"
 echo "---------------"
 echo "Below you'll find the complete plan output."
 echo '```tf'
+echo "Terraform will perform the following actions:"
 cat "$WORKING_FILE_PATH"
 echo '```'
 rm "$WORKING_FILE_PATH"
