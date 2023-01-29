@@ -1,5 +1,9 @@
+author: sgametrio
 name: 'Terraform summary report'
 description: 'Creates a Job summary from a "terraform plan" output file'
+branding:
+  icon: type
+  color: purple
 inputs:
   # TODO: Detect whether JSON or not and format accordingly
   log-file:
