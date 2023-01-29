@@ -12,8 +12,6 @@ cp "$FILE_PATH" "$WORKING_FILE_PATH"
 sed 's/\x1b\[[0-9;]*m//g' -i'' "$WORKING_FILE_PATH"
 # Remove "reading... lines"
 grep -v "Refreshing state...\|[rR]eading...\|Read complete after\|::debug:" "$WORKING_FILE_PATH" > "$WORKING_FILE_PATH-tmp" && mv "$WORKING_FILE_PATH-tmp" "$WORKING_FILE_PATH"
-# Remove <<[-~+]EOT -~+ character
-sed -E 's/<<[-~+]EOT/<<EOT/g' -i'' "$WORKING_FILE_PATH"
 # Extract summary of planned changes
 NO_CHANGES=$(grep "No changes" "$WORKING_FILE_PATH" || echo "")
 if [[ ${#NO_CHANGES} -gt 0 ]]; then
