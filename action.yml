@@ -18,5 +18,5 @@ runs:
     - shell: bash
       run: |
         TF_OUT=$(format-output.sh "${{inputs.log-file}}")
-        echo "# ${{ inputs.title }}" >> $GITHUB_STEP_SUMMARY
+        echo "## ${{ inputs.title }}" >> $GITHUB_STEP_SUMMARY
         echo "$TF_OUT" >> $GITHUB_STEP_SUMMARY

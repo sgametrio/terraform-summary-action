@@ -24,10 +24,11 @@ sed '/Plan: /q' -i'' "$WORKING_FILE_PATH"
 # Delete everything before "Terraform will perform the following actions" line
 sed '0,/Terraform will perform the following actions/d' -i'' "$WORKING_FILE_PATH"
 echo "<span style='font-size:1.25rem;font-weight:semibold'>$PLANNED_CHANGES</span>"
-echo "---------------"
-echo "Below you'll find the complete plan output."
+echo "<details><summary>Expand for Terraform plan full output</summary><p>"
+echo ""
 echo '```tf'
 echo "Terraform will perform the following actions:"
 cat "$WORKING_FILE_PATH"
 echo '```'
+echo "</p></details>"
 rm "$WORKING_FILE_PATH"
