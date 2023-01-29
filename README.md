@@ -6,7 +6,9 @@ The idea is to highlight the number of changes planned to be applied while givin
 
 ## Example
 
-![Job summary example](/readme-assets/job-summary-example.png?raw=true "Job summary example")
+<center>
+    <img alt="Job summary example" src="./readme-assets/job-summary.png?raw=true" width="80%"/>
+</center>
 
 ## Usage
 
