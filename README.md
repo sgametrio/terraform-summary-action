@@ -6,9 +6,10 @@ The idea is to highlight the number of changes planned to be applied while givin
 
 ## Example
 
-
+Screenshot to be added
 
 ## Usage
+
 ```yml
 - name: Terraform Plan
   run: terraform plan | tee terraform_plan_output.txt
@@ -20,3 +21,9 @@ The idea is to highlight the number of changes planned to be applied while givin
     # Optional
     title: Custom header in the Job summary
 ```
+
+## Tests
+
+Tested with Terraform:
+
+- v1.3.6
