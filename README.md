@@ -6,7 +6,7 @@ The idea is to highlight the number of changes planned to be applied while givin
 
 ## Example
 
-Screenshot to be added
+![Job summary example](/readme-assets/job-summary-example.png?raw=true "Job summary example")
 
 ## Usage
 
