@@ -6,9 +6,9 @@ The idea is to highlight the number of changes planned to be applied while givin
 
 ## Example
 
-<center>
+<div align=center>
     <img alt="Job summary example" src="./readme-assets/job-summary.png?raw=true" width="80%"/>
-</center>
+</div>
 
 ## Usage
 
