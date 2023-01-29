@@ -13,7 +13,7 @@ Screenshot to be added
 ```yml
 - name: Terraform Plan
   run: terraform plan | tee terraform_plan_output.txt
-      
+
 - name: Print job summary
   uses: sgametrio/terraform-summary-action@main
   with:
