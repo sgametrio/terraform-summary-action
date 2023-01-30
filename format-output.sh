@@ -18,7 +18,11 @@ if [[ ${#NO_CHANGES} -gt 0 ]]; then
     echo "$NO_CHANGES" | sed 's|No changes|<span style="font-weight:bold;color:darkgreen">No changes</span>|g'
     exit 0
 fi
-PLANNED_CHANGES=$(grep "Plan: " "$WORKING_FILE_PATH")
+PLANNED_CHANGES=$(grep "Plan: " "$WORKING_FILE_PATH" || echo "")
+if [[ "${PLANNED_CHANGES}" == "" ]]; then
+    echo "Couldn't find any planned changes output."
+    exit 0
+fi
 # Delete everything after the "Plan: ..." line
 sed '/Plan: /q' -i'' "$WORKING_FILE_PATH"
 # Delete everything before "Terraform will perform the following actions" line
