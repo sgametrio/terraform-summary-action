@@ -29,3 +29,7 @@ The idea is to highlight the number of changes planned to be applied while givin
 Tested with Terraform:
 
 - v1.3.6
+
+## Planned features
+
+- [ ] Ingest output from `terraform apply` and return as a summary the short "Apply complete! Resources: X added, Y changed, Z destroyed.
