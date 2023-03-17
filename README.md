@@ -33,3 +33,4 @@ Tested with Terraform:
 ## Planned features
 
 - [ ] Ingest output from `terraform apply` and return as a summary the short "Apply complete! Resources: X added, Y changed, Z destroyed.
+- [ ] Display summary of to-be changed/created/destroyed resources after plan.
